@@ -10,6 +10,6 @@ export default (container: Container) => {
     .bind<GetUserPlaysetService>(injectables.GetUserPlaysetService)
     .to(GetUserPlaysetService);
   container
-    .bind<GetPlaysetsService>(injectables.GetPlaysets)
+    .bind<GetPlaysetsService>(injectables.GetPlaysetsService)
     .to(GetPlaysetsService);
 };

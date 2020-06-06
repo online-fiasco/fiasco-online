@@ -6,11 +6,12 @@ export default {
   Runnable: Symbol.for('Runnable'),
   HttpApplication: Symbol.for('HttpApplication'),
   HttpV1Router: Symbol.for('HttpV1Router'),
+  GetPlaysetsHandler: Symbol.for('GetPlaysetsHandler'),
 
   /**
    * Services
    */
-  GetPlaysets: Symbol.for('GetPlaysetsService'),
+  GetPlaysetsService: Symbol.for('GetPlaysetsService'),
   GetUserPlaysetService: Symbol.for('GetUserPlaysetService'),
 
   /**
