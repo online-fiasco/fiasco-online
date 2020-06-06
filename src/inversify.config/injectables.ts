@@ -5,6 +5,7 @@ export default {
   Application: Symbol.for('Application'),
   Runnable: Symbol.for('Runnable'),
   HttpApplication: Symbol.for('HttpApplication'),
+  HttpV1Controller: Symbol.for('HttpV1Controller'),
 
   /**
    * Services

@@ -1,5 +1,5 @@
 import { injectable, inject } from 'inversify';
-import injectables from '@src/injectables';
+import injectables from '@src/inversify.config/injectables';
 import PlaysetRepository from '@src/domain/Playset/repository/Playset.repo';
 
 @injectable()

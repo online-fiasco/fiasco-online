@@ -1,5 +1,5 @@
 import { injectable, multiInject } from 'inversify';
-import injectables from '@src/injectables';
+import injectables from '@src/inversify.config/injectables';
 import Runnable from './Runnable';
 
 @injectable()
