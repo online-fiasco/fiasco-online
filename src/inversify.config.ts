@@ -4,7 +4,7 @@ import injectables from './injectables';
 
 import App from './interface/App';
 import Runnable from './interface/Runnable';
-import HttpAppV1 from './interface/v1/http/HttpApp';
+import HttpApp from './interface/http/HttpApp';
 
 import GetPlaysetsService from './application/Playset/getPlaysets.service';
 import GetUserPlaysetService from './application/Playset/getUserPlayset.service';
@@ -22,7 +22,7 @@ container
   .to(App);
 container
   .bind<Runnable>(injectables.Runnable)
-  .to(HttpAppV1);
+  .to(HttpApp);
 
 /**
  * Applications
