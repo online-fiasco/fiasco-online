@@ -8,6 +8,7 @@ import GetUserPlaysetService from './application/Playset/getUserPlayset.service'
 
 import PlaysetRepository from './domain/Playset/repository/Playset.repo';
 import PlaysetMongoDBRepository from './repository/Playset/Playset.repo';
+import GetPlaysetsService from './application/Playset/getPlaysets.service';
 
 const container = new Container();
 
@@ -24,6 +25,9 @@ container
 container
   .bind<GetUserPlaysetService>(injectables.GetUserPlaysetService)
   .to(GetUserPlaysetService);
+container
+  .bind<GetPlaysetsService>(injectables.GetPlaysets)
+  .to(GetPlaysetsService);
 
 /**
  * Repositories

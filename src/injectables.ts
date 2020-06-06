@@ -7,6 +7,7 @@ export default {
   /**
    * Services
    */
+  GetPlaysets: Symbol.for('GetPlaysetsService'),
   GetUserPlaysetService: Symbol.for('GetUserPlaysetService'),
 
   /**
