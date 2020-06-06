@@ -4,6 +4,7 @@
     "sourceMap": true,
     "strictNullChecks": true,
     "moduleResolution": "node",
+    "experimentalDecorators": true,
     "target": "es2020",
     "allowJs": false,
     "baseUrl": ".",
