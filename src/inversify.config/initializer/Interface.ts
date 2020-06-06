@@ -7,7 +7,7 @@ import Runnable from '@src/interface/Runnable';
 import HttpApp from '@src/interface/http/HttpApp';
 import HttpRouter from '@src/interface/http/HttpRouter';
 import HttpV1Router from '@src/interface/http/v1';
-import PlaysetController from '@src/interface/http/v1/Playset/Playset.controller';
+import PlaysetRouter from '@src/interface/http/v1/Playset/Playset.router';
 
 export default (container: Container) => {
   container
@@ -20,6 +20,6 @@ export default (container: Container) => {
     .bind<HttpRouter>(injectables.HttpApplication)
     .to(HttpV1Router);
   container
-    .bind<HttpRouter>(injectables.HttpV1Controller)
-    .to(PlaysetController);
+    .bind<HttpRouter>(injectables.HttpV1Router)
+    .to(PlaysetRouter);
 };
