@@ -2,15 +2,15 @@ import { PlaysetDTO } from '@src/DTO/playset.dto';
 import Playset from '../entity/Playset.entity';
 
 export default interface PlaysetRepository {
-  getPlaysets(): Playset[];
-  getPlaysetsByAuthor(userId: string): Playset[];
-  getPlaysetById(id: string): Playset | null;
+  getPlaysets(): Promise<Playset[]>;
+  getPlaysetsByAuthor(userId: string): Promise<Playset[]>
+  getPlaysetById(id: string): Promise<Playset | null>;
 
-  createPlayset(data: PlaysetDTO): Playset;
+  createPlayset(data: PlaysetDTO): Promise<Playset>;
 
-  modifyPlayset(id: string, data: PlaysetDTO): void;
+  modifyPlayset(id: string, data: PlaysetDTO): Promise<void>;
 
-  deletePlayset(id: string): void;
+  deletePlayset(id: string): Promise<void>;
 
 // eslint-disable-next-line semi
 }
