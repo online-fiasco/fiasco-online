@@ -14,5 +14,6 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': [2, { args: "none" }],
     'import/no-unresolved': 0,
     'linebreak-style': 0,
+    'no-useless-constructor': 0,
   }
 };
