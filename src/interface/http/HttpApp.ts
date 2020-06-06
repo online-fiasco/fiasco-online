@@ -24,7 +24,7 @@ class HttpApp implements Runnable {
     });
 
     httpApps.forEach((httpApp) => {
-      this.app.use(httpApp.routerName, httpApp.getRouter());
+      this.app.use(httpApp.routerName, httpApp.router);
     });
   }
 
