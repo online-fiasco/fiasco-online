@@ -15,7 +15,9 @@ class PlaysetRouter implements HttpRouter {
   public constructor(
     @inject(injectables.GetPlaysetsHandler)
     private getPlaysetsHandler: GetPlaysetsHandler,
-  ) {}
+  ) {
+    this.getPlaysetsConfigure();
+  }
 
   private getPlaysetsConfigure() {
     const handler = this.getPlaysetsHandler;
