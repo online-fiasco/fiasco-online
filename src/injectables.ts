@@ -3,6 +3,7 @@ export default {
    * Interfaces
    */
   Application: Symbol.for('Application'),
+  Runnable: Symbol.for('Runnable'),
 
   /**
    * Services
