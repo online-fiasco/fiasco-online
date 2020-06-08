@@ -13,3 +13,8 @@ export type PlaysetDTO = {
 
   preset: PlaysetPreset[],
 }
+
+export type PlaysetFilter = {
+  author?: string;
+  keyword?: string;
+}

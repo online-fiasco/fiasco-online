@@ -1,9 +1,8 @@
-import { PlaysetDTO } from '@src/DTO/playset.dto';
+import { PlaysetDTO, PlaysetFilter } from '@src/DTO/playset.dto';
 import Playset from '../entity/Playset.entity';
 
 export default interface PlaysetRepository {
-  getPlaysets(): Promise<Playset[]>;
-  getPlaysetsByAuthor(userId: string): Promise<Playset[]>
+  getPlaysets(filter: PlaysetFilter): Promise<Playset[]>;
   getPlaysetById(id: string): Promise<Playset | null>;
 
   createPlayset(data: PlaysetDTO): Promise<Playset>;

@@ -4,11 +4,11 @@ import { injectable } from 'inversify';
 import Playset from '@src/domain/Playset/entity/Playset.entity';
 import PlaysetRepository from '@src/domain/Playset/repository/Playset.repo';
 
-import { PlaysetDTO } from '@src/DTO/playset.dto';
+import { PlaysetDTO, PlaysetFilter } from '@src/DTO/playset.dto';
 
 @injectable()
 class PlaysetMockRepository implements PlaysetRepository {
-  public async getPlaysets(): Promise<Playset[]> {
+  public async getPlaysets(filter: PlaysetFilter): Promise<Playset[]> {
     const result: Playset[] = [
       {
         _id: 'sampleId1',

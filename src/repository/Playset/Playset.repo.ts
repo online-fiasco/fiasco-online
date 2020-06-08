@@ -1,18 +1,13 @@
 import { injectable } from 'inversify';
 
-
 import Playset from '@src/domain/Playset/entity/Playset.entity';
 import PlaysetRepository from '@src/domain/Playset/repository/Playset.repo';
 
-import { PlaysetDTO } from '@src/DTO/playset.dto';
+import { PlaysetDTO, PlaysetFilter } from '@src/DTO/playset.dto';
 
 @injectable()
 class PlaysetMongoDBRepository implements PlaysetRepository {
-  getPlaysets(): Promise<Playset[]> {
-    throw new Error('Method not implemented.');
-  }
-
-  getPlaysetsByAuthor(userId: string): Promise<Playset[]> {
+  getPlaysets(filter: PlaysetFilter): Promise<Playset[]> {
     throw new Error('Method not implemented.');
   }
 
