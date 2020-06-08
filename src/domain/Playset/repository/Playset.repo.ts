@@ -7,9 +7,9 @@ export default interface PlaysetRepository {
 
   createPlayset(data: PlaysetDTO): Promise<Playset>;
 
-  modifyPlayset(id: string, data: PlaysetDTO): Promise<void>;
+  modifyPlayset(id: string, data: PlaysetDTO): Promise<Playset | null>;
 
-  deletePlayset(id: string): Promise<void>;
+  deletePlayset(id: string): Promise<Playset | null>;
 
 // eslint-disable-next-line semi
 }

@@ -60,11 +60,11 @@ class PlaysetMockRepository implements PlaysetRepository {
     throw new Error('Method not implemented.');
   }
 
-  modifyPlayset(id: string, data: PlaysetDTO): Promise<void> {
+  modifyPlayset(id: string, data: PlaysetDTO): Promise<Playset | null> {
     throw new Error('Method not implemented.');
   }
 
-  deletePlayset(id: string): Promise<void> {
+  deletePlayset(id: string): Promise<Playset | null> {
     throw new Error('Method not implemented.');
   }
 }
