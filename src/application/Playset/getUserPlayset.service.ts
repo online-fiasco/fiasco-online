@@ -10,7 +10,7 @@ class GetUserPlaysetService {
   ) {}
 
   public async getUserPlayset(userId: string) {
-    const playsets = await this.playsetRepository.getPlaysetsByAuthor(userId);
+    const playsets = await this.playsetRepository.getPlaysets({ author: userId });
 
     return playsets;
   }
