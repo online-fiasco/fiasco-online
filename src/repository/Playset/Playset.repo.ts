@@ -3,7 +3,7 @@ import { injectable } from 'inversify';
 import Playset from '@src/domain/Playset/entity/Playset.entity';
 import PlaysetRepository from '@src/domain/Playset/repository/Playset.repo';
 
-import { PlaysetDTO, PlaysetFilter } from '@src/DTO/playset.dto';
+import { PlaysetDTO, PlaysetFilter } from '@src/domain/Playset/DTO/playset.dto';
 
 import { PlaysetModel, PlaysetDocument } from '@src/infrastructure/mongoose/models/Playset.model';
 import { MongooseFilterQuery } from 'mongoose';

@@ -1,4 +1,4 @@
-import { PlaysetDTO, PlaysetFilter } from '@src/DTO/playset.dto';
+import { PlaysetDTO, PlaysetFilter } from '@src/domain/Playset/DTO/playset.dto';
 import Playset from '../entity/Playset.entity';
 
 export default interface PlaysetRepository {

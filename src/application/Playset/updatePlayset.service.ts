@@ -3,7 +3,7 @@ import injectables from '@src/inversify.config/injectables';
 
 import PlaysetRepository from '@src/domain/Playset/repository/Playset.repo';
 
-import { PlaysetDTO } from '@src/DTO/playset.dto';
+import { PlaysetDTO } from '@src/domain/Playset/DTO/playset.dto';
 
 
 @injectable()
