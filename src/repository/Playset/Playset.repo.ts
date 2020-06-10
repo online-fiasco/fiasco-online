@@ -6,6 +6,9 @@ import PlaysetRepository from '@src/domain/Playset/repository/Playset.repo';
 import { PlaysetDTO, PlaysetFilter } from '@src/DTO/playset.dto';
 
 import { PlaysetModel, PlaysetDocument } from '@src/infrastructure/mongoose/models/Playset.model';
+import { MongooseFilterQuery } from 'mongoose';
+
+type PlaysetQuery = MongooseFilterQuery<Pick<PlaysetDocument, keyof Playset>>;
 
 @injectable()
 class PlaysetMongoDBRepository implements PlaysetRepository {
@@ -23,12 +26,14 @@ class PlaysetMongoDBRepository implements PlaysetRepository {
     };
   }
 
-  public async getPlaysets(filter: PlaysetFilter): Promise<Playset[]> {
+  public async getPlaysets(filter: PlaysetFilter = {}): Promise<Playset[]> {
     const { author, keyword } = filter;
-    const playsets = await PlaysetModel.find({
-      author,
-      $text: keyword ? { $search: keyword } : undefined,
-    });
+    const findOption: PlaysetQuery = {};
+
+    if (author) findOption.author = author;
+    if (keyword) findOption.$text = { $search: keyword };
+
+    const playsets = await PlaysetModel.find({});
 
     return playsets.map(this.convertDocument);
   }

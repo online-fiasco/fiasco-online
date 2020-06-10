@@ -5,7 +5,7 @@
     "strictNullChecks": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "target": "es2020",
+    "target": "es2019",
     "allowJs": false,
     "baseUrl": ".",
     "paths": {
