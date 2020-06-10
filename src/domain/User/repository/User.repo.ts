@@ -4,7 +4,8 @@ import User from '../entity/User.entity';
 export default interface UserRepository {
   getUsers(filter?: UserFilter): Promise<User[]>;
   getUserById(id: string): Promise<User | null>;
-  getUserByValidation (email: string): (password: string) => User | null;
+
+  getPasswordValidator (id: string): Promise<((password: string) => User | null) | null>;
 
   createUser(data: UserDTO, password: string): Promise<User>;
 
