@@ -12,7 +12,11 @@ export default {
    * Services
    */
   GetPlaysetsService: Symbol.for('GetPlaysetsService'),
+  GetPlaysetService: Symbol.for('GetPlaysetService'),
   GetUserPlaysetService: Symbol.for('GetUserPlaysetService'),
+  CreatePlaysetService: Symbol.for('CreatePlaysetService'),
+  UpdatePlaysetService: Symbol.for('UpdatePlaysetService'),
+  DeletePlaysetService: Symbol.for('DeletePlaysetService'),
 
   /**
    * Repositories

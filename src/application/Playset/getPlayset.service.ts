@@ -3,17 +3,17 @@ import injectables from '@src/inversify.config/injectables';
 import PlaysetRepository from '@src/domain/Playset/repository/Playset.repo';
 
 @injectable()
-class GetUserPlaysetService {
+class GetPlaysetService {
   public constructor(
     @inject(injectables.PlaysetRepository) private playsetRepository: PlaysetRepository,
   // eslint-disable-next-line no-empty-function
   ) {}
 
-  public async getUserPlayset(userId: string) {
-    const playset = await this.playsetRepository.getPlaysets({ author: userId });
+  public async getPlayset(id: string) {
+    const playset = await this.playsetRepository.getPlaysetById(id);
 
     return playset;
   }
 }
 
-export default GetUserPlaysetService;
+export default GetPlaysetService;
