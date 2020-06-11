@@ -1,6 +1,7 @@
 import { injectable, inject } from 'inversify';
 import injectables from '@src/inversify.config/injectables';
 import PlaysetRepository from '@src/domain/Playset/repository/Playset.repo';
+import * as Errors from './Errors';
 
 @injectable()
 class GetPlaysetService {
@@ -11,6 +12,10 @@ class GetPlaysetService {
 
   public async getPlayset(id: string) {
     const playset = await this.playsetRepository.getPlaysetById(id);
+
+    if (playset === null) {
+      throw new Errors.PlaysetNotFound(id);
+    }
 
     return playset;
   }
