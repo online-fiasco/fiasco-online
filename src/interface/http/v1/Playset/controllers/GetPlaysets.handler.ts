@@ -3,17 +3,19 @@ import injectables from '@src/inversify.config/injectables';
 
 import * as Express from 'express';
 
+import HttpHandler from '@src/interface/http/HttpHandler';
+
 import GetPlaysetsService from '@src/application/Playset/getPlaysets.service';
 
 @injectable()
-class GetPlaysetsHandler {
+class GetPlaysetsHandler implements HttpHandler {
   public constructor(
     @inject(injectables.GetPlaysetsService)
     private getPlaysetsService: GetPlaysetsService,
   // eslint-disable-next-line no-empty-function
   ) {}
 
-  public async handler(req: Express.Request, res: Express.Response): Promise<void> {
+  public async handler(req: Express.Request, res: Express.Response) {
     const service = this.getPlaysetsService;
     const result = await service.getPlaysets();
 
