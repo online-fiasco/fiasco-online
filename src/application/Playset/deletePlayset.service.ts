@@ -3,7 +3,7 @@ import injectables from '@src/inversify.config/injectables';
 
 import PlaysetRepository from '@src/domain/Playset/repository/Playset.repo';
 
-import * as Errors from './Errors/PlaysetNotFound';
+import PlaysetNotFound from './Errors/PlaysetNotFound';
 
 
 @injectable()
@@ -17,7 +17,7 @@ class DeletePlaysetService {
     const playset = await this.playsetRepository.deletePlayset(id);
 
     if (playset === null) {
-      throw new Errors.PlaysetNotFound(id);
+      throw new PlaysetNotFound(id);
     }
 
     return playset;
