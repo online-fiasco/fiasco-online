@@ -3,7 +3,7 @@ import injectables from '@src/inversify.config/injectables';
 
 import PlaysetRepository from '@src/domain/Playset/repository/Playset.repo';
 
-import * as Errors from './Errors';
+import * as Errors from './Errors/PlaysetNotFound';
 
 
 @injectable()

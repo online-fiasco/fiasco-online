@@ -5,7 +5,7 @@ import PlaysetRepository from '@src/domain/Playset/repository/Playset.repo';
 
 import { PlaysetDTO } from '@src/domain/Playset/DTO/playset.dto';
 
-import * as Errors from './Errors';
+import * as Errors from './Errors/PlaysetNotFound';
 
 
 @injectable()
