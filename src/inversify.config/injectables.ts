@@ -22,4 +22,5 @@ export default {
    * Repositories
    */
   PlaysetRepository: Symbol.for('PlaysetRepository'),
+  UserRepository: Symbol.for('UserRepository'),
 };

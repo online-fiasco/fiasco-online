@@ -26,6 +26,14 @@ class HttpApp implements Runnable {
     httpApps.forEach((httpApp) => {
       this.app.use(httpApp.routerName, httpApp.router);
     });
+
+    this.app.use(
+      // eslint-disable-next-line no-unused-vars
+      (error: Error, req: Express.Request, res: Express.Response, next: Express.NextFunction) => {
+        console.error(error);
+        res.status(500).send('Unexpected error occurred');
+      },
+    );
   }
 
   public run(): Promise<void> {
