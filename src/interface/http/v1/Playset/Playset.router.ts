@@ -5,6 +5,7 @@ import * as Express from 'express';
 
 import HttpRouter from '../../HttpRouter';
 import GetPlaysetsHandler from './controllers/GetPlaysets.handler';
+import GetPlaysetHander from './controllers/GetPlayset.handler';
 
 @injectable()
 class PlaysetRouter extends HttpRouter {
@@ -15,15 +16,24 @@ class PlaysetRouter extends HttpRouter {
   public constructor(
     @inject(injectables.GetPlaysetsHandler)
     private getPlaysetsHandler: GetPlaysetsHandler,
+    @inject(injectables.GetPlaysetHandler)
+    private getPlaysetHandler: GetPlaysetHander,
   ) {
     super();
     this.getPlaysetsConfigure();
+    this.getPlaysetConfigure();
   }
 
   private getPlaysetsConfigure() {
     const handlerMethod = this.getHandlerMethod(this.getPlaysetsHandler);
 
     this.router.get('/', handlerMethod);
+  }
+
+  private getPlaysetConfigure() {
+    const handlerMethod = this.getHandlerMethod(this.getPlaysetHandler);
+
+    this.router.get('/:id', handlerMethod);
   }
 }
 
