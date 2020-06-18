@@ -12,7 +12,7 @@ import HttpV1Router from '@src/interface/http/v1';
 import PlaysetRouter from '@src/interface/http/v1/Playset/Playset.router';
 import GetPlaysetsHandler from '@src/interface/http/v1/Playset/controllers/GetPlaysets.handler';
 import GetPlaysetHandler from '@src/interface/http/v1/Playset/controllers/GetPlayset.handler';
-import CreatePlaysetHandler from '@src/interface/http/v1/Playset/controllers/createPlayset.handler';
+import CreatePlaysetHandler from '@src/interface/http/v1/Playset/controllers/CreatePlayset.handler';
 import LoginHandler from '@src/interface/http/v1/User/controllers/Login.handler';
 import UserRouter from '@src/interface/http/v1/User/User.router';
 import SignupHandler from '@src/interface/http/v1/User/controllers/Signup.handler';
