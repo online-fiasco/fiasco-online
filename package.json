@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node -r tsconfig-paths/register src",
+    "watch": "nodemon --watch src --delay 1 --exec ts-node -r tsconfig-paths/register src/index.ts",
     "test": "nyc mocha",
     "lint": "eslint **/*.ts",
     "lint:fix": "eslint --fix **/*.ts"
@@ -40,6 +41,7 @@
     "express": "^4.17.1",
     "inversify": "^5.0.1",
     "mongoose": "^5.9.18",
+    "nodemon": "^2.0.4",
     "reflect-metadata": "^0.1.13"
   }
 }
