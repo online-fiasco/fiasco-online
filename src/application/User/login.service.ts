@@ -15,10 +15,10 @@ class LoginService {
     const validator = await this.userRepository.getPasswordValidator(userId);
     if (validator === null) { throw new UserNotFoundError(userId); }
 
-    const user = validator(password);
-    if (user === null) { throw new LoginFailedError(userId); }
+    const token = validator(password);
+    if (token === null) { throw new LoginFailedError(userId); }
 
-    return user;
+    return token;
   }
 }
 

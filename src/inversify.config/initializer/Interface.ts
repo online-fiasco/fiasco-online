@@ -13,6 +13,8 @@ import PlaysetRouter from '@src/interface/http/v1/Playset/Playset.router';
 import GetPlaysetsHandler from '@src/interface/http/v1/Playset/controllers/GetPlaysets.handler';
 import GetPlaysetHandler from '@src/interface/http/v1/Playset/controllers/GetPlayset.handler';
 import CreatePlaysetHandler from '@src/interface/http/v1/Playset/controllers/createPlayset.handler';
+import LoginHandler from '@src/interface/http/v1/User/controllers/Login.handler';
+import UserRouter from '@src/interface/http/v1/User/User.router';
 
 export default (container: Container) => {
   container
@@ -36,4 +38,11 @@ export default (container: Container) => {
   container
     .bind<CreatePlaysetHandler>(injectables.CreatePlaysetHandler)
     .to(CreatePlaysetHandler);
+
+  container
+    .bind<HttpRouter>(injectables.HttpV1Router)
+    .to(UserRouter);
+  container
+    .bind<LoginHandler>(injectables.LoginHandler)
+    .to(LoginHandler);
 };
