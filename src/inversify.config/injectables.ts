@@ -9,6 +9,7 @@ export default {
 
   GetPlaysetsHandler: Symbol.for('GetPlaysetsHandler'),
   GetPlaysetHandler: Symbol.for('GetPlaysetHandler'),
+  CreatePlaysetHandler: Symbol.for('CreatePlaysetHandler'),
 
   /**
    * Services
