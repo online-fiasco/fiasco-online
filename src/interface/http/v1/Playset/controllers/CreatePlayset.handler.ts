@@ -7,6 +7,7 @@ import HttpHandler from '@src/interface/http/HttpHandler';
 
 import CreatePlaysetService from '@src/application/Playset/createPlayset.service';
 import { PlaysetDTO } from '@src/domain/Playset/DTO/playset.dto';
+import AuthorizedRequest from '@src/interface/http/AuthorizedRequest';
 
 @injectable()
 class CreatePlaysetHandler implements HttpHandler {
@@ -16,7 +17,7 @@ class CreatePlaysetHandler implements HttpHandler {
   // eslint-disable-next-line no-empty-function
   ) {}
 
-  public async handler(req: Express.Request, res: Express.Response) {
+  public async handler(req: AuthorizedRequest, res: Express.Response) {
     const service = this.createPlaysetService;
     const validation = validationResult(req);
     if (!validation.isEmpty()) {
@@ -24,7 +25,7 @@ class CreatePlaysetHandler implements HttpHandler {
       return;
     }
 
-    const data: PlaysetDTO = { ...req.body };
+    const data: PlaysetDTO = { ...req.body, author: req.user._id };
     const result = await service.createPlayset(data);
 
     res.status(200).json({ result });

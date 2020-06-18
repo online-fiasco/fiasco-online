@@ -4,6 +4,8 @@ import injectables from '@src/inversify.config/injectables';
 import * as Express from 'express';
 
 import HttpRouter from '../../HttpRouter';
+import authorize from '../middlewares/auth';
+
 import GetPlaysetsHandler from './controllers/GetPlaysets.handler';
 import GetPlaysetHander from './controllers/GetPlayset.handler';
 import CreatePlaysetHandler from './controllers/createPlayset.handler';
@@ -44,7 +46,7 @@ class PlaysetRouter extends HttpRouter {
     const validator = this.createPlaysetHandler.getValidator();
     const handlerMethod = this.getHandlerMethod(this.createPlaysetHandler);
 
-    this.router.post('/', validator, handlerMethod);
+    this.router.post('/', authorize, validator, handlerMethod);
   }
 }
 
