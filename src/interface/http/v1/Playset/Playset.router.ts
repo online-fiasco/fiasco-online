@@ -8,7 +8,7 @@ import authorize from '../middlewares/auth';
 
 import GetPlaysetsHandler from './controllers/GetPlaysets.handler';
 import GetPlaysetHander from './controllers/GetPlayset.handler';
-import CreatePlaysetHandler from './controllers/createPlayset.handler';
+import CreatePlaysetHandler from './controllers/CreatePlayset.handler';
 
 @injectable()
 class PlaysetRouter extends HttpRouter {

@@ -1,4 +1,4 @@
-import { Container, inject } from 'inversify';
+import { Container } from 'inversify';
 // eslint-disable-next-line import/order
 import injectables from '../injectables';
 
