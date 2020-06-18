@@ -6,7 +6,13 @@ export default {
   Runnable: Symbol.for('Runnable'),
   HttpApplication: Symbol.for('HttpApplication'),
   HttpV1Router: Symbol.for('HttpV1Router'),
+
   GetPlaysetsHandler: Symbol.for('GetPlaysetsHandler'),
+  GetPlaysetHandler: Symbol.for('GetPlaysetHandler'),
+  CreatePlaysetHandler: Symbol.for('CreatePlaysetHandler'),
+
+  LoginHandler: Symbol.for('LoginHandler'),
+  SignupHandler: Symbol.for('SignupHandler'),
 
   /**
    * Services
@@ -17,6 +23,9 @@ export default {
   CreatePlaysetService: Symbol.for('CreatePlaysetService'),
   UpdatePlaysetService: Symbol.for('UpdatePlaysetService'),
   DeletePlaysetService: Symbol.for('DeletePlaysetService'),
+
+  LoginService: Symbol.for('LoginService'),
+  SignupService: Symbol.for('SignupService'),
 
   /**
    * Repositories

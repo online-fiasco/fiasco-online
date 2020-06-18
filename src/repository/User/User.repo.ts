@@ -1,5 +1,6 @@
 import { injectable } from 'inversify';
 import { MongooseFilterQuery } from 'mongoose';
+import * as config from '@src/config';
 
 import User from '@src/domain/User/entity/User.entity';
 import { UserDTO, UserFilter } from '@src/domain/User/DTO/UserDTO';
@@ -7,9 +8,10 @@ import UserRepository from '@src/domain/User/repository/User.repo';
 
 import * as encryption from '@src/infrastructure/encryption';
 import { UserDocument, UserModel } from '@src/infrastructure/mongoose/models/User.model';
+import { sign } from 'jsonwebtoken';
 
 type UserQuery = MongooseFilterQuery<Pick<UserDocument, keyof User>>;
-type PasswordValidator = (password: string) => User | null;
+type PasswordValidator = (password: string) => string | null;
 
 @injectable()
 class UserMongoDBRepository implements UserRepository {
@@ -39,14 +41,18 @@ class UserMongoDBRepository implements UserRepository {
     return user ? this.convertDocument(user) : null;
   }
 
-  public async getPasswordValidator(id: string): Promise<PasswordValidator | null> {
-    const user = await UserModel.findById(id);
+  public async getPasswordValidator(email: string): Promise<PasswordValidator | null> {
+    const userDocument = await UserModel.findOne({ email });
 
-    if (!user) return null;
+    if (!userDocument) return null;
     return (password: string) => {
-      const isRightPassword = encryption.comparePassword(password, user.password);
+      const isRightPassword = encryption.comparePassword(password, userDocument.password);
+      if (!isRightPassword) { return null; }
 
-      return isRightPassword ? this.convertDocument(user) : null;
+      const user = this.convertDocument(userDocument);
+      const token = sign(user, config.SecretKey as string, { expiresIn: 60 * 60 });
+
+      return token;
     };
   }
 

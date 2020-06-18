@@ -5,7 +5,7 @@ export default interface UserRepository {
   getUsers(filter?: UserFilter): Promise<User[]>;
   getUserById(id: string): Promise<User | null>;
 
-  getPasswordValidator (id: string): Promise<((password: string) => User | null) | null>;
+  getPasswordValidator (email: string): Promise<((password: string) => string | null) | null>;
 
   createUser(data: UserDTO, password: string): Promise<User>;
 

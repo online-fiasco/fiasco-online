@@ -11,14 +11,14 @@ class LoginService {
   // eslint-disable-next-line no-empty-function
   ) {}
 
-  public async login(userId: string, password: string) {
-    const validator = await this.userRepository.getPasswordValidator(userId);
-    if (validator === null) { throw new UserNotFoundError(userId); }
+  public async login(email: string, password: string) {
+    const validator = await this.userRepository.getPasswordValidator(email);
+    if (validator === null) { throw new UserNotFoundError(email, `User with email '${email}' not found`); }
 
-    const user = validator(password);
-    if (user === null) { throw new LoginFailedError(userId); }
+    const token = validator(password);
+    if (token === null) { throw new LoginFailedError(email); }
 
-    return user;
+    return token;
   }
 }
 

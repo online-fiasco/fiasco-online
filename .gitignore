@@ -460,3 +460,4 @@ MigrationBackup/
 
 dist
 samples
+*.code-workspace
