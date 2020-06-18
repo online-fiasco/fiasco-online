@@ -1,4 +1,4 @@
-import { Container } from 'inversify';
+import { Container, inject } from 'inversify';
 // eslint-disable-next-line import/order
 import injectables from '../injectables';
 
@@ -15,6 +15,7 @@ import GetPlaysetHandler from '@src/interface/http/v1/Playset/controllers/GetPla
 import CreatePlaysetHandler from '@src/interface/http/v1/Playset/controllers/createPlayset.handler';
 import LoginHandler from '@src/interface/http/v1/User/controllers/Login.handler';
 import UserRouter from '@src/interface/http/v1/User/User.router';
+import SignupHandler from '@src/interface/http/v1/User/controllers/Signup.handler';
 
 export default (container: Container) => {
   container
@@ -45,4 +46,7 @@ export default (container: Container) => {
   container
     .bind<LoginHandler>(injectables.LoginHandler)
     .to(LoginHandler);
+  container
+    .bind<SignupHandler>(injectables.SignupHandler)
+    .to(SignupHandler);
 };

@@ -12,6 +12,7 @@ export default {
   CreatePlaysetHandler: Symbol.for('CreatePlaysetHandler'),
 
   LoginHandler: Symbol.for('LoginHandler'),
+  SignupHandler: Symbol.for('SignupHandler'),
 
   /**
    * Services
@@ -24,6 +25,7 @@ export default {
   DeletePlaysetService: Symbol.for('DeletePlaysetService'),
 
   LoginService: Symbol.for('LoginService'),
+  SignupService: Symbol.for('SignupService'),
 
   /**
    * Repositories

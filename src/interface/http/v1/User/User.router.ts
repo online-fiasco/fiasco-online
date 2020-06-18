@@ -5,6 +5,7 @@ import * as Express from 'express';
 
 import HttpRouter from '../../HttpRouter';
 import LoginHandler from './controllers/Login.handler';
+import SignupHandler from './controllers/Signup.handler';
 
 @injectable()
 class UserRouter extends HttpRouter {
@@ -15,16 +16,26 @@ class UserRouter extends HttpRouter {
   public constructor(
     @inject(injectables.LoginHandler)
     private loginHandler: LoginHandler,
+    @inject(injectables.SignupHandler)
+    private signupHandler: SignupHandler,
   ) {
     super();
     this.loginConfigure();
+    this.signupConfigure();
   }
 
   private loginConfigure() {
     const validatior = this.loginHandler.getValidator();
     const handlerMethod = this.getHandlerMethod(this.loginHandler);
 
-    this.router.post('/login', validatior, handlerMethod);
+    this.router.get('/login', validatior, handlerMethod);
+  }
+
+  private signupConfigure() {
+    const validator = this.signupHandler.getValidator();
+    const handlerMethod = this.getHandlerMethod(this.signupHandler);
+
+    this.router.post('/signup', validator, handlerMethod);
   }
 }
 

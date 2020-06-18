@@ -9,6 +9,7 @@ import UpdatePlaysetsService from '@src/application/Playset/updatePlayset.servic
 import GetPlaysetService from '@src/application/Playset/getPlayset.service';
 import DeletePlaysetService from '@src/application/Playset/deletePlayset.service';
 import LoginService from '@src/application/User/login.service';
+import SignupService from '@src/application/User/signup.service';
 
 export default (container: Container) => {
   container
@@ -33,4 +34,7 @@ export default (container: Container) => {
   container
     .bind<LoginService>(injectables.LoginService)
     .to(LoginService);
+  container
+    .bind<SignupService>(injectables.SignupService)
+    .to(SignupService);
 };
