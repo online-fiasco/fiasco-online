@@ -41,8 +41,8 @@ class UserMongoDBRepository implements UserRepository {
     return user ? this.convertDocument(user) : null;
   }
 
-  public async getPasswordValidator(id: string): Promise<PasswordValidator | null> {
-    const userDocument = await UserModel.findById(id);
+  public async getPasswordValidator(email: string): Promise<PasswordValidator | null> {
+    const userDocument = await UserModel.findOne({ email });
 
     if (!userDocument) return null;
     return (password: string) => {
