@@ -16,6 +16,7 @@ import CreatePlaysetHandler from '@src/interface/http/v1/Playset/controllers/Cre
 import LoginHandler from '@src/interface/http/v1/User/controllers/Login.handler';
 import UserRouter from '@src/interface/http/v1/User/User.router';
 import SignupHandler from '@src/interface/http/v1/User/controllers/Signup.handler';
+import GetUserPlaysetsHandler from '@src/interface/http/v1/User/controllers/GetUserPlaysets.handler';
 
 export default (container: Container) => {
   container
@@ -49,4 +50,7 @@ export default (container: Container) => {
   container
     .bind<SignupHandler>(injectables.SignupHandler)
     .to(SignupHandler);
+  container
+    .bind<GetUserPlaysetsHandler>(injectables.GetUserPlaysetsHandler)
+    .to(GetUserPlaysetsHandler);
 };
