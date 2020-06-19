@@ -13,6 +13,7 @@ export default {
 
   LoginHandler: Symbol.for('LoginHandler'),
   SignupHandler: Symbol.for('SignupHandler'),
+  GetUserPlaysetsHandler: Symbol.for('GetUserPlaysetsHandler'),
 
   /**
    * Services

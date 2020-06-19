@@ -33,7 +33,7 @@ class PlaysetMongoDBRepository implements PlaysetRepository {
     if (author) findOption.author = author;
     if (keyword) findOption.$text = { $search: keyword };
 
-    const playsets = await PlaysetModel.find({});
+    const playsets = await PlaysetModel.find(findOption);
 
     return playsets.map(this.convertDocument);
   }
