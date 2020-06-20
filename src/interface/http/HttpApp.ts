@@ -23,6 +23,10 @@ class HttpApp implements Runnable {
       res.send('Fiasco-Online HTTP API SERVER');
     });
 
+    this.app.get('/version', (req: Express.Request, res: Express.Response) => {
+      res.send(process.env.npm_package_version);
+    });
+
     httpApps.forEach((httpApp) => {
       this.app.use(httpApp.routerName, httpApp.router);
     });
