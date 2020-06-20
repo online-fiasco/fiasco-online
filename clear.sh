@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rm -rf /home/ubuntu/zennvote-backend/deploy/zennvote-backend-v2
+rm -rf /home/ubuntu/fiasco-online/deploy/server/fiasco-online
