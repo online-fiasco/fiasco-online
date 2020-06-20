@@ -33,15 +33,15 @@ jobs:
         MESSAGE_TYPE: test-success
     
     - name: Deploy file
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: |
-          aws deploy create-deployment \
-            --region ap-northeast-2 \
-            --application-name fiasco-online-server-deploy-service \
-            --deployment-group-name fiasco-online-server-deploy-group \
-            --github-location repository="online-fiasco/fiasco-online",commitId="${{ github.sha }}"
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      run: |
+        aws deploy create-deployment \
+          --region ap-northeast-2 \
+          --application-name fiasco-online-server-deploy-service \
+          --deployment-group-name fiasco-online-server-deploy-group \
+          --github-location repository="online-fiasco/fiasco-online",commitId="${{ github.sha }}"
     
     - name: Send failure message on discord
       if: failure()
