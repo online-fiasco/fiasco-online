@@ -39,7 +39,7 @@ jobs:
       run: |
         aws deploy create-deployment \
           --region ap-northeast-2 \
-          --application-name fiasco-online-server-deploy-service \
+          --application-name fiasco-online-serve-deploy-service \
           --deployment-group-name fiasco-online-server-deploy-group \
           --github-location repository="online-fiasco/fiasco-online",commitId="${{ github.sha }}"
     
