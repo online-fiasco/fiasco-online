@@ -10,6 +10,7 @@ export default {
   GetPlaysetsHandler: Symbol.for('GetPlaysetsHandler'),
   GetPlaysetHandler: Symbol.for('GetPlaysetHandler'),
   CreatePlaysetHandler: Symbol.for('CreatePlaysetHandler'),
+  DeletePlaysetHandler: Symbol.for('DeletePlaysetHandler'),
 
   LoginHandler: Symbol.for('LoginHandler'),
   SignupHandler: Symbol.for('SignupHandler'),

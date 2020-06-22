@@ -9,6 +9,7 @@ import authorize from '../middlewares/auth';
 import GetPlaysetsHandler from './controllers/GetPlaysets.handler';
 import GetPlaysetHander from './controllers/GetPlayset.handler';
 import CreatePlaysetHandler from './controllers/CreatePlayset.handler';
+import DeletePlaysetHandler from './controllers/DeletePlayset.handler';
 
 @injectable()
 class PlaysetRouter extends HttpRouter {
@@ -23,11 +24,14 @@ class PlaysetRouter extends HttpRouter {
     private getPlaysetHandler: GetPlaysetHander,
     @inject(injectables.CreatePlaysetHandler)
     private createPlaysetHandler: CreatePlaysetHandler,
+    @inject(injectables.DeletePlaysetHandler)
+    private deletePlaysetHandler: DeletePlaysetHandler,
   ) {
     super();
     this.getPlaysetsConfigure();
     this.getPlaysetConfigure();
     this.createPlaysetConfigure();
+    this.deletePlaysetConfigure();
   }
 
   private getPlaysetsConfigure() {
@@ -47,6 +51,12 @@ class PlaysetRouter extends HttpRouter {
     const handlerMethod = this.getHandlerMethod(this.createPlaysetHandler);
 
     this.router.post('/', authorize, validator, handlerMethod);
+  }
+
+  private deletePlaysetConfigure() {
+    const handlerMethod = this.getHandlerMethod(this.deletePlaysetHandler);
+
+    this.router.delete('/:id', authorize, handlerMethod);
   }
 }
 
