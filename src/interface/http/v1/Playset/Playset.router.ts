@@ -10,6 +10,7 @@ import GetPlaysetsHandler from './controllers/GetPlaysets.handler';
 import GetPlaysetHander from './controllers/GetPlayset.handler';
 import CreatePlaysetHandler from './controllers/CreatePlayset.handler';
 import DeletePlaysetHandler from './controllers/DeletePlayset.handler';
+import UpdatePlaysetHandler from './controllers/UpdatePlayset.service';
 
 @injectable()
 class PlaysetRouter extends HttpRouter {
@@ -24,6 +25,8 @@ class PlaysetRouter extends HttpRouter {
     private getPlaysetHandler: GetPlaysetHander,
     @inject(injectables.CreatePlaysetHandler)
     private createPlaysetHandler: CreatePlaysetHandler,
+    @inject(injectables.UpdatePlaysetHandler)
+    private updatePlaysetHandler: UpdatePlaysetHandler,
     @inject(injectables.DeletePlaysetHandler)
     private deletePlaysetHandler: DeletePlaysetHandler,
   ) {
@@ -31,6 +34,7 @@ class PlaysetRouter extends HttpRouter {
     this.getPlaysetsConfigure();
     this.getPlaysetConfigure();
     this.createPlaysetConfigure();
+    this.updatePlaysetConfigure();
     this.deletePlaysetConfigure();
   }
 
@@ -51,6 +55,13 @@ class PlaysetRouter extends HttpRouter {
     const handlerMethod = this.getHandlerMethod(this.createPlaysetHandler);
 
     this.router.post('/', authorize, validator, handlerMethod);
+  }
+
+  private updatePlaysetConfigure() {
+    const validator = this.updatePlaysetHandler.getValidator();
+    const handlerMethod = this.getHandlerMethod(this.updatePlaysetHandler);
+
+    this.router.put('/:id', authorize, validator, handlerMethod);
   }
 
   private deletePlaysetConfigure() {
