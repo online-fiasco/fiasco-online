@@ -3,6 +3,7 @@ import injectables from '@src/inversify.config/injectables';
 
 import * as Express from 'express';
 import * as cors from 'cors';
+import { Server } from 'http';
 
 import Runnable from '../Runnable';
 import HttpRouter from './HttpRouter';
@@ -10,6 +11,8 @@ import HttpRouter from './HttpRouter';
 @injectable()
 class HttpApp implements Runnable {
   private app: Express.Express;
+
+  private server: Server;
 
   public constructor(
     @multiInject(injectables.HttpApplication) httpApps: HttpRouter[],
@@ -40,13 +43,21 @@ class HttpApp implements Runnable {
     );
   }
 
+  public getApp() {
+    return this.app;
+  }
+
   public run(): Promise<void> {
     return new Promise<void>((resolve) => {
-      this.app.listen(3000, () => {
+      this.server = this.app.listen(3000, () => {
         console.log('HTTP server started on port 3000');
         resolve();
       });
     });
+  }
+
+  public async stop() {
+    this.server.close();
   }
 }
 
