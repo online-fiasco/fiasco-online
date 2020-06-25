@@ -36,10 +36,12 @@ describe('GET /v1/playset/{id}', () => {
 
   it('Get normal playset', async () => {
     const stub = sinon.stub(Mock.prototype, 'getPlaysetById');
-    stub.resolves(getSamplePlayset());
+    const sample = getSamplePlayset();
+    stub.resolves(sample);
 
-    await request.get('/v1/playset/testid').expect(200);
+    const response = await request.get('/v1/playset/testid').expect(200);
 
+    expect(response.body.result).is.deep.equal(sample);
     expect(stub.called).is.true;
   });
 
