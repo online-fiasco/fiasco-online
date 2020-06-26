@@ -1,5 +1,4 @@
 import 'reflect-metadata';
-import { injectable } from 'inversify';
 import container from '@src/inversify.config';
 import injectables from '@src/inversify.config/injectables';
 
