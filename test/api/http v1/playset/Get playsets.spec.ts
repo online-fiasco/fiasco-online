@@ -51,7 +51,7 @@ describe('GET /v1/playset', () => {
     stub.resolves([sample]);
 
     const response = await request
-      .get('/v1/playset?keyword=sample&author=thisisauthor')
+      .get('/v1/playset')
       .query(query)
       .expect(200);
 
