@@ -17,7 +17,12 @@ class GetPlaysetsHandler implements HttpHandler {
 
   public async handler(req: Express.Request, res: Express.Response) {
     const service = this.getPlaysetsService;
-    const result = await service.getPlaysets();
+    const { author, keyword } = req.query;
+
+    const result = await service.getPlaysets({
+      author: author as string,
+      keyword: keyword as string,
+    });
 
     res.status(200).json({ result });
   }
