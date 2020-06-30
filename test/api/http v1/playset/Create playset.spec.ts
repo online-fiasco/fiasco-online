@@ -35,15 +35,39 @@ describe('POST /v1/playset', () => {
     sinon.restore();
   });
 
-  it('Add New Playset', async () => {
+  it('Should response 401 if request not have authrization', async () => {
     const stub = sinon.stub(Mock.prototype, 'createPlayset');
-    stub.resolves({ result: 'sample' } as any);
+    const sample = getSamplePlayset({ _id: undefined });
+
+    await request
+      .post('/v1/playset')
+      .send(sample)
+      .expect(401);
+
+    expect(stub.called).is.not.true;
+  });
+
+  it('Should response 400 if request have invalid body', async () => {
+    const stub = sinon.stub(Mock.prototype, 'createPlayset');
     const verifyStub = sinon.stub(jwt, 'verify');
     verifyStub.returns({ _id: 'testuserid', email: 'test@no.mail', nickname: 'test', username: 'test' } as any);
+
+    await request
+      .post('/v1/playset')
+      .set('authorization', 'testkey')
+      .expect(400);
+
+    expect(stub.called).is.not.true;
+  });
+
+  it('Add New Playset', async () => {
+    const stub = sinon.stub(Mock.prototype, 'createPlayset');
+    const verifyStub = sinon.stub(jwt, 'verify');
     const sample = getSamplePlayset({ _id: undefined });
     stub.resolves(sample);
+    verifyStub.returns({ _id: 'testuserid', email: 'test@no.mail', nickname: 'test', username: 'test' } as any);
 
-    const res = await request
+    await request
       .post('/v1/playset')
       .set('authorization', 'testkey')
       .send(sample)
