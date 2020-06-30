@@ -1,5 +1,5 @@
 import * as Express from 'express';
-import { verify } from 'jsonwebtoken';
+import { verify, JsonWebTokenError } from 'jsonwebtoken';
 
 import * as config from '@src/config';
 import User from '@src/domain/User/entity/User.entity';
@@ -10,7 +10,13 @@ export default (req: AuthorizedRequest, res: Express.Response, next: Express.Nex
   if (token === undefined) {
     return res.status(401).json('Unauthorized');
   }
-  const decoded = verify(token, config.SecretKey as string) as User;
-  req.user = decoded;
-  next();
+  try {
+    const decoded = verify(token, config.SecretKey as string) as User;
+    req.user = decoded;
+    next();
+  } catch (error) {
+    if (error instanceof JsonWebTokenError) {
+      return res.status(401).json('Unauthorized');
+    }
+  }
 };
